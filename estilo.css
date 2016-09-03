@@ -1,0 +1,131 @@
+html{
+	width: 800px;
+  	margin: auto;
+  	position: relative;
+
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+header{
+	display: inline-block;
+  	margin-left: 0;
+}
+
+table {
+  width: 100%;
+}
+
+td{
+	text-align: left;		
+}
+
+table td {
+  border: 1px solid #273b47;
+  border-collapse: collapse;
+}
+
+.menu{
+	font-size: 24px;
+  	display: inline-block;
+  	position: absolute;
+  	right: 0;
+  	background: #273b47;
+}
+
+.menu li {
+  display: inline-block;
+  margin-left: 30px;
+  text-decoration: none;
+  margin-right: 25px;
+  font-size: 17px;
+ 
+}
+
+.menu li a{
+	text-decoration: none;
+	 color: white;
+}
+
+tr td strong{
+	display: inline-block;
+}
+
+.experiencia table td {
+	display: list-item;
+	text-decoration: none;
+}
+
+.experiencia table article{
+	display: list-item;
+	text-decoration: none;
+}
+
+
+img{
+	border-radius: 50%;
+	border: 1px black;
+	position: inherit;
+	margin-left: 270px;
+	margin-top: 100px;
+}
+
+h1{
+	font-family: 'Allerta', sans-serif;
+  	margin: 0;
+	border: 1px solid #273b47;
+	border-radius: 0 25px 50px 10px;
+	background: #273b47;
+	color: white;
+	font-size: 20px;
+	padding: 5px;
+}
+
+section{
+	margin: 25px;
+}
+
+td{
+	text-align: justify;		
+}
+
+.footer .contenedor {
+  display: flex;
+  justify-content: space-between;
+  background: #273b47;
+  text-decoration: none;
+}
+
+
+.formulario {
+  display: flex;
+  width: 800px;
+  color: white;
+}
+
+
+.col1, .col2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.col1 {
+  margin-right: 15px;
+}
+.col2 {
+  align-items: flex-start;
+}
+
+.col2 .button {
+  margin-top: 15px;
+}
+
+.contacto a{
+	color:white;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column	;
+	margin: 20px;
+}
