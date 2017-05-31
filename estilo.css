@@ -56,6 +56,7 @@ tr td strong{
 .experiencia table td {
 	display: list-item;
 	text-decoration: none;
+	list-style: none;
 }
 
 .experiencia table article{
