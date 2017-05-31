@@ -25,6 +25,8 @@ td{
 table td {
   border: 1px solid #273b47;
   border-collapse: collapse;
+  list-style: none;
+
 }
 
 .menu{
@@ -51,6 +53,8 @@ table td {
 
 tr td strong{
 	display: inline-block;
+	list-style: none;
+
 }
 
 .experiencia table td {
@@ -62,6 +66,8 @@ tr td strong{
 .experiencia table article{
 	display: list-item;
 	text-decoration: none;
+	list-style: none;
+
 }
 
 
