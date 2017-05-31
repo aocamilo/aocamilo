@@ -16,6 +16,8 @@ header{
 
 table {
   width: 100%;
+  list-style: none;
+
 }
 
 td{
