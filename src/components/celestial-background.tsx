@@ -24,11 +24,11 @@ const CelestialBackground = ({ scrollPosition }: CelestialBackgroundProps) => {
     let animationFrameId: number;
 
     class Star {
-      x: number = 0;
-      y: number = 0;
-      radius: number = 0;
-      opacity: number = 0;
-      blinkRate: number = 0;
+      x = 0;
+      y = 0;
+      radius = 0;
+      opacity = 0;
+      blinkRate = 0;
 
       constructor() {
         if (!canvas) return;
@@ -40,10 +40,11 @@ const CelestialBackground = ({ scrollPosition }: CelestialBackgroundProps) => {
       }
 
       draw() {
-        ctx!.beginPath();
-        ctx!.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx!.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-        ctx!.fill();
+        if (!ctx) return;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fill();
       }
 
       update() {
@@ -55,11 +56,11 @@ const CelestialBackground = ({ scrollPosition }: CelestialBackgroundProps) => {
     }
 
     class Cloud {
-      x: number = 0;
-      y: number = 0;
-      width: number = 0;
-      height: number = 0;
-      speed: number = 0;
+      x = 0;
+      y = 0;
+      width = 0;
+      height = 0;
+      speed = 0;
 
       constructor() {
         if (!canvas) return;
@@ -135,7 +136,9 @@ const CelestialBackground = ({ scrollPosition }: CelestialBackgroundProps) => {
       const moonRadius = 50;
 
       // Moon glow
-      const gradient = ctx!.createRadialGradient(
+      if (!ctx) return;
+
+      const gradient = ctx.createRadialGradient(
         x,
         y,
         moonRadius,
@@ -145,16 +148,16 @@ const CelestialBackground = ({ scrollPosition }: CelestialBackgroundProps) => {
       );
       gradient.addColorStop(0, "rgba(255, 255, 255, 0.3)");
       gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-      ctx!.fillStyle = gradient;
-      ctx!.beginPath();
-      ctx!.arc(x, y, moonRadius * 2, 0, Math.PI * 2);
-      ctx!.fill();
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(x, y, moonRadius * 2, 0, Math.PI * 2);
+      ctx.fill();
 
       // Moon
-      ctx!.beginPath();
-      ctx!.arc(x, y, moonRadius, 0, Math.PI * 2);
-      ctx!.fillStyle = "#FFFFFF";
-      ctx!.fill();
+      ctx.beginPath();
+      ctx.arc(x, y, moonRadius, 0, Math.PI * 2);
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fill();
 
       // Craters
       const craters = [
@@ -164,47 +167,67 @@ const CelestialBackground = ({ scrollPosition }: CelestialBackgroundProps) => {
       ];
 
       craters.forEach((crater) => {
-        ctx!.beginPath();
-        ctx!.arc(x + crater.x, y + crater.y, crater.r, 0, Math.PI * 2);
-        ctx!.fillStyle = "rgba(220, 220, 220, 0.8)";
-        ctx!.fill();
+        ctx.beginPath();
+        ctx.arc(x + crater.x, y + crater.y, crater.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(220, 220, 220, 0.8)";
+        ctx.fill();
       });
     };
 
     const drawSun = (x: number, y: number) => {
-      const sunRadius = 50;
+      if (!ctx) return;
+
+      const sunRadius = 40;
+      const rayLength = 20;
+      const rayCount = 12;
 
       // Sun glow
-      const gradient = ctx!.createRadialGradient(
+      const gradient = ctx.createRadialGradient(
         x,
         y,
         sunRadius,
         x,
         y,
-        sunRadius * 3,
+        sunRadius * 2,
       );
-      gradient.addColorStop(0, "rgba(255, 255, 0, 0.8)");
-      gradient.addColorStop(0.2, "rgba(255, 200, 0, 0.3)");
-      gradient.addColorStop(1, "rgba(255, 200, 0, 0)");
-
-      ctx!.fillStyle = gradient;
-      ctx!.beginPath();
-      ctx!.arc(x, y, sunRadius * 3, 0, Math.PI * 2);
-      ctx!.fill();
+      gradient.addColorStop(0, "rgba(255, 255, 160, 0.4)");
+      gradient.addColorStop(1, "rgba(255, 255, 160, 0)");
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(x, y, sunRadius * 2, 0, Math.PI * 2);
+      ctx.fill();
 
       // Sun
-      const sunGradient = ctx!.createRadialGradient(x, y, 0, x, y, sunRadius);
-      sunGradient.addColorStop(0, "#FFF700");
-      sunGradient.addColorStop(1, "#FFA500");
+      ctx.beginPath();
+      ctx.arc(x, y, sunRadius, 0, Math.PI * 2);
+      const sunGradient = ctx.createRadialGradient(x, y, 0, x, y, sunRadius);
+      sunGradient.addColorStop(0, "#FFF5B8");
+      sunGradient.addColorStop(1, "#FFD275");
+      ctx.fillStyle = sunGradient;
+      ctx.fill();
 
-      ctx!.fillStyle = sunGradient;
-      ctx!.beginPath();
-      ctx!.arc(x, y, sunRadius, 0, Math.PI * 2);
-      ctx!.fill();
+      // Sun rays
+      ctx.strokeStyle = "rgba(255, 210, 117, 0.6)";
+      ctx.lineWidth = 3;
+
+      for (let i = 0; i < rayCount; i++) {
+        const angle = (i * Math.PI * 2) / rayCount;
+        const startX = x + (sunRadius + 5) * Math.cos(angle);
+        const startY = y + (sunRadius + 5) * Math.sin(angle);
+        const endX = x + (sunRadius + rayLength) * Math.cos(angle);
+        const endY = y + (sunRadius + rayLength) * Math.sin(angle);
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+      }
     };
 
     const animate = () => {
-      ctx!.clearRect(0, 0, canvas.width, canvas.height);
+      if (!ctx || !canvas) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Calculate celestial body position based on scroll
       const maxScroll =
@@ -216,11 +239,11 @@ const CelestialBackground = ({ scrollPosition }: CelestialBackgroundProps) => {
 
       if (theme === "dark") {
         // Night sky gradient with reduced opacity
-        const nightGradient = ctx!.createLinearGradient(0, 0, 0, canvas.height);
+        const nightGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
         nightGradient.addColorStop(0, "rgba(10, 11, 30, 0.85)");
         nightGradient.addColorStop(1, "rgba(26, 27, 62, 0.85)");
-        ctx!.fillStyle = nightGradient;
-        ctx!.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = nightGradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         stars.forEach((star) => {
           star.update();
@@ -229,11 +252,11 @@ const CelestialBackground = ({ scrollPosition }: CelestialBackgroundProps) => {
         drawMoon(celestialX, celestialY);
       } else {
         // Day sky gradient with reduced opacity
-        const dayGradient = ctx!.createLinearGradient(0, 0, 0, canvas.height);
+        const dayGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
         dayGradient.addColorStop(0, "rgba(135, 206, 235, 0.85)");
         dayGradient.addColorStop(1, "rgba(224, 246, 255, 0.85)");
-        ctx!.fillStyle = dayGradient;
-        ctx!.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = dayGradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         clouds.forEach((cloud) => {
           cloud.update();

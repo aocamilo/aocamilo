@@ -6,7 +6,7 @@ import ClientHero from "@/components/client-hero";
 import ProjectsSection from "@/components/sections/projects-section";
 import AboutSection from "@/components/sections/about-section";
 import ContactSection from "@/components/sections/contact-section";
-import { Project } from "@/types";
+import type { Project } from "@/types";
 
 interface ClientHomeProps {
   projects: Project[];

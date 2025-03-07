@@ -70,7 +70,7 @@ export default function ClientWrapper({
       // Add a short timeout to ensure theme classes are applied before we trigger a repaint
       const timer = setTimeout(() => {
         // Force a reflow/repaint by accessing a property that triggers layout
-        const triggerReflow = htmlElement.scrollTop;
+        void htmlElement.scrollTop;
         // Apply a class to force text to update
         htmlElement.classList.add("theme-transition");
         setTimeout(() => {

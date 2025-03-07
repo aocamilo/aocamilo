@@ -1,4 +1,4 @@
-import { Project } from "@/types";
+import type { Project } from "@/types";
 import ClientHome from "@/components/client-home";
 
 const projects: Project[] = [
