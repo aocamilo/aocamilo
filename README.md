@@ -1,29 +1,28 @@
-# Create T3 App
+# Camilo Arango
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Senior Software Engineer
 
-## What's next? How do I make an app with this?
+👨‍💻 Full Stack Software Engineer with 6+ years of development experience and 10+ years in the IT industry.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+### About Me
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Passionate about improving developer experience (DX) and velocity, solving complex problems, and delivering high-impact solutions. Currently working as a Senior Software Engineer at Novacomp, designing and implementing robust architectures using NextJS, NestJS, React, and AWS.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Tech Stack
 
-## Learn More
+**Frontend**: React, NextJS, Angular, TypeScript, JavaScript  
+**Backend**: NodeJS, NestJS, Express  
+**Databases**: MongoDB, PostgreSQL  
+**Cloud**: AWS, GCP  
+**Languages**: 🇪🇸 Spanish (native), 🇺🇸 English (professional)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+### Connect With Me
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+[![GitHub](https://img.shields.io/badge/GitHub-aocamilo-181717?style=flat&logo=github)](https://github.com/aocamilo)
+[![Email](https://img.shields.io/badge/Email-camilo__ar95%40outlook.com-0078D4?style=flat&logo=microsoft-outlook)](mailto:camilo_ar95@outlook.com)
+[![YouTube](https://img.shields.io/badge/YouTube-@aocamilo-FF0000?style=flat&logo=youtube)](https://www.youtube.com/@aocamilo)
+[![Twitter](https://img.shields.io/badge/Twitter-@AoCamilo-1DA1F2?style=flat&logo=twitter)](https://x.com/AoCamilo)
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+---
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+💡 I excel in creating scalable frontend solutions and modernizing legacy applications to improve performance.
