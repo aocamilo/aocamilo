@@ -19,8 +19,37 @@ const AnimatedCursor = () => {
     }>
   >([]);
   const animationFrameRef = useRef<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if the device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      if (typeof window === "undefined") return false;
+      return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent,
+        ) || window.innerWidth <= 768
+      );
+    };
+
+    const handleResize = () => {
+      setIsMobile(checkMobile());
+    };
+
+    // Initial check
+    setIsMobile(checkMobile());
+
+    // Add resize listener to update when window size changes
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
@@ -48,9 +77,11 @@ const AnimatedCursor = () => {
     return () => {
       window.removeEventListener("mousemove", mouseMove);
     };
-  }, [lineTrail]);
+  }, [lineTrail, isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const checkMovement = () => {
       if (Date.now() - lastMoveTime > 100) {
         setIsMoving(false);
@@ -59,9 +90,11 @@ const AnimatedCursor = () => {
 
     const movementInterval = setInterval(checkMovement, 100);
     return () => clearInterval(movementInterval);
-  }, [lastMoveTime]);
+  }, [lastMoveTime, isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const updateTrail = () => {
       setTrail((prevTrail) => {
         // Generate a random scale for supernova particles
@@ -89,10 +122,12 @@ const AnimatedCursor = () => {
     const trailInterval = setInterval(updateTrail, 20);
 
     return () => clearInterval(trailInterval);
-  }, [mousePosition]);
+  }, [mousePosition, isMobile]);
 
   // Animation loop for line trail expiration
   useEffect(() => {
+    if (isMobile) return;
+
     const animateLineTrail = () => {
       const now = Date.now();
       // Keep only points that are less than 3 seconds old
@@ -110,9 +145,11 @@ const AnimatedCursor = () => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const addHoverClass = () => setCursorVariant("hover");
     const removeHoverClass = () => setCursorVariant("default");
 
@@ -128,7 +165,7 @@ const AnimatedCursor = () => {
         el.removeEventListener("mouseleave", removeHoverClass);
       });
     };
-  }, []);
+  }, [isMobile]);
 
   const variants = {
     default: {
@@ -171,6 +208,12 @@ const AnimatedCursor = () => {
     return Math.max(0, 1 - age / 3000);
   };
 
+  // Don't render cursor effects on mobile
+  if (isMobile) {
+    return null;
+  }
+
+  // For non-mobile devices, render the cursor animation
   return (
     <>
       {/* Cosmic trail line (comet tail) */}
