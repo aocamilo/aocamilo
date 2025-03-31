@@ -21,13 +21,6 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Notifier microservice",
-    description: "A microservice for sending notifications to users.",
-    tags: ["Nest.JS", "TypeScript", "Docker", "Resend", "GCP"],
-    githubUrl: "https://github.com/aocamilo/wp-notifier",
-  },
-  {
-    id: 3,
     title: "Binance order book copy",
     description: `This is a basic clone of binance's Order Book. This projects fetches real time asks and bids data using a web socket, 
       and attempts to display it on a similar way Binance does. 
@@ -42,6 +35,23 @@ const projects: Project[] = [
       "Socket.io",
     ],
     githubUrl: "https://github.com/aocamilo/binance-order-book-copy",
+  },
+  {
+    id: 3,
+    title: "Broken links tester",
+    description:
+      "A fullstack app with React and Golang for testing broken links on a website.",
+    tags: [
+      "Tanstack Start",
+      "React",
+      "Typescript",
+      "Tailwind CSS",
+      "Zod",
+      "GoLang",
+      "Docker",
+    ],
+    githubUrl: "https://github.com/aocamilo/broken-links-tester",
+    liveUrl: "https://broken-links-tester-production.up.railway.app/",
   },
 ];
 
