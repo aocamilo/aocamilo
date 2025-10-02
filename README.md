@@ -5,7 +5,7 @@
 Passionate about improving developer experience (DX) and velocity, solving complex problems, and delivering high-impact solutions. Currently working as a Senior Software Engineer at Novacomp, designing and implementing robust architectures using NextJS, NestJS, React, and AWS.
 
 - 🌍 I'm based in Medellín, Colombia
-- 🖥️ See my portfolio at [https://aocamilo.vercel.app/](http://https://aocamilo.vercel.app/)
+- 🖥️ See my portfolio at [https://aocamilo.vercel.app/](https://aocamilo.vercel.app/)
 - ✉️ You can contact me at [camilo_ar95@outlook.com](mailto:camilo_ar95@outlook.com)
 - 🧠 I'm currently learning Java Spring Boot
 
